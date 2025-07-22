@@ -19,7 +19,7 @@ class HomeRepoImpl implements HomeRepo {
       );
       return Right(response as List<BookModel>);
     } catch (e) {
-      if(e is DioException) {
+      if (e is DioException) {
         return Left(ServerFailure.fromDioError(e));
       }
       return Left(ServerFailure(e.toString()));
@@ -30,12 +30,11 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var response = apiService.get(
-        endPoint:
-            'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:Programming',
+        endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming',
       );
       return Right(response as List<BookModel>);
     } catch (e) {
-      if(e is DioException) {
+      if (e is DioException) {
         return Left(ServerFailure.fromDioError(e));
       }
       return Left(ServerFailure(e.toString()));
