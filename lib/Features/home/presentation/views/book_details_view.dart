@@ -1,4 +1,4 @@
-import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/core/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/Features/home/presentation/widgets/book_details_view_body.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +23,8 @@ class _BookDetailsViewState extends State<BookDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: BookDetailsViewBody(bookModel: widget.bookModel)));
+    return SafeArea(
+      child: Scaffold(body: BookDetailsViewBody(bookModel: widget.bookModel)),
+    );
   }
 }

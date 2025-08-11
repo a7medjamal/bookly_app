@@ -1,4 +1,6 @@
-import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/Features/search/data/repos/search_repo_impl.dart';
+import 'package:bookly_app/Features/search/presentation/manager/search_books_cubit/search_books_cubit.dart';
+import 'package:bookly_app/core/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app/Features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/Features/home/presentation/views/book_details_view.dart';
@@ -24,7 +26,20 @@ class AppRouter {
           child: BookDetailsView(bookModel: state.extra as BookModel),
         ),
       ),
-      GoRoute(path: kSearchView, builder: (context, state) => const SearchView()),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) {
+          final bookModel = state.extra as BookModel;
+
+          return BlocProvider(
+            create: (context) => SearchBooksCubit(getIt.get<SearchRepoImpl>())
+              ..searchBooks(
+                query: bookModel.volumeInfo!.title ?? 'Computer Science',
+              ),
+            child: SearchView(bookModel: bookModel),
+          );
+        },
+      ),
     ],
   );
 }

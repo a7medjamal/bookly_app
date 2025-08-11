@@ -7,7 +7,8 @@ class CustomButton extends StatelessWidget {
     required this.textColor,
     required this.text,
     this.borderRadius,
-    this.fontSize, this.onPressed,
+    this.fontSize,
+    this.onPressed,
   });
   final Color backgroundColor;
   final Color textColor;

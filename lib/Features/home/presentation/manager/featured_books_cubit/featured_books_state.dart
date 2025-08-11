@@ -8,6 +8,7 @@ abstract class FeaturedBooksState extends Equatable {
 }
 
 class FeaturedBooksInitial extends FeaturedBooksState {}
+
 class FeaturedBooksLoading extends FeaturedBooksState {}
 
 class FeaturedBooksFailure extends FeaturedBooksState {
@@ -21,4 +22,3 @@ class FeaturedBooksSuccess extends FeaturedBooksState {
 
   const FeaturedBooksSuccess(this.books);
 }
-
