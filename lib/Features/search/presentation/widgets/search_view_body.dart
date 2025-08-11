@@ -1,4 +1,6 @@
 import 'package:bookly_app/Features/search/presentation/manager/search_books_cubit/search_books_cubit.dart';
+import 'package:bookly_app/Features/search/presentation/widgets/search_results_list_view.dart';
+import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,12 +16,10 @@ class SearchViewBody extends StatelessWidget {
     final query = _searchController.text.trim();
 
     if (query.isEmpty) {
-      // Use bookModel if search is empty
       context.read<SearchBooksCubit>().searchBooks(
         query: bookModel.volumeInfo!.title ?? 'Computer Science',
       );
     } else {
-      // Use search text
       context.read<SearchBooksCubit>().searchBooks(query: query);
     }
   }
@@ -56,6 +56,25 @@ class SearchViewBody extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              'Search Results',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.w600,
+                fontFamily: kGtSectraFine,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: SearchResultsListView(),
             ),
           ),
         ],
