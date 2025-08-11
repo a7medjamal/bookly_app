@@ -1,3 +1,5 @@
+import 'package:bookly_app/core/data/models/book_model/book_model.dart';
+import 'package:bookly_app/core/data/models/book_model/volume_info.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,12 @@ class CustomAppBar extends StatelessWidget {
           const Spacer(),
           IconButton(
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kSearchView);
+              final defaultBook = BookModel(
+                volumeInfo: VolumeInfo(title: 'Computer Science'),
+              );
+              GoRouter.of(
+                context,
+              ).push(AppRouter.kSearchView, extra: defaultBook);
             },
             icon: Icon(
               FontAwesomeIcons.magnifyingGlass,
