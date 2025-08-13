@@ -17,7 +17,6 @@
   - [State Management](#-state-management)
   - [Navigation](#-navigation)
   - [Networking](#-networking)
-  - [UI Components](#-ui-components)
   - [Dependency Injection](#-dependency-injection)
 - [API Integration](#api-integration)
 - [Getting Started](#getting-started)
