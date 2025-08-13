@@ -24,7 +24,6 @@ class SearchRepoImpl implements SearchRepo {
       return right(books);
     } catch (e) {
       if (e is DioException) {
-        print("Moshkelaaaaaaaaaaaa");
         return Left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));
