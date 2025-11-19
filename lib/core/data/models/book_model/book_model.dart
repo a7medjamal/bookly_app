@@ -26,36 +26,40 @@ class BookModel extends Equatable {
     this.searchInfo,
   });
 
+  /// دالة بتستقبل JSON جاي من الـ API وبتحوّله لأوبجكت من نوع BookModel
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
-    kind: json['kind'] as String?,
-    id: json['id'] as String?,
-    etag: json['etag'] as String?,
-    selfLink: json['selfLink'] as String?,
-    volumeInfo: json['volumeInfo'] == null
-        ? null
-        : VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
-    saleInfo: json['saleInfo'] == null
-        ? null
-        : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
-    accessInfo: json['accessInfo'] == null
-        ? null
-        : AccessInfo.fromJson(json['accessInfo'] as Map<String, dynamic>),
-    searchInfo: json['searchInfo'] == null
-        ? null
-        : SearchInfo.fromJson(json['searchInfo'] as Map<String, dynamic>),
-  );
+        kind: json['kind'] as String?,
+        id: json['id'] as String?,
+        etag: json['etag'] as String?,
+        selfLink: json['selfLink'] as String?,
+        volumeInfo: json['volumeInfo'] == null
+            ? null
+            : VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
+        saleInfo: json['saleInfo'] == null
+            ? null
+            : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
+        accessInfo: json['accessInfo'] == null
+            ? null
+            : AccessInfo.fromJson(json['accessInfo'] as Map<String, dynamic>),
+        searchInfo: json['searchInfo'] == null
+            ? null
+            : SearchInfo.fromJson(json['searchInfo'] as Map<String, dynamic>),
+      );
 
+  /// دالة بتحوّل بيانات الكتاب لـ JSON علشان تتخزن أو تتبعت لأي API
   Map<String, dynamic> toJson() => {
-    'kind': kind,
-    'id': id,
-    'etag': etag,
-    'selfLink': selfLink,
-    'volumeInfo': volumeInfo?.toJson(),
-    'saleInfo': saleInfo?.toJson(),
-    'accessInfo': accessInfo?.toJson(),
-    'searchInfo': searchInfo?.toJson(),
-  };
+        'kind': kind,
+        'id': id,
+        'etag': etag,
+        'selfLink': selfLink,
+        'volumeInfo': volumeInfo?.toJson(),
+        'saleInfo': saleInfo?.toJson(),
+        'accessInfo': accessInfo?.toJson(),
+        'searchInfo': searchInfo?.toJson(),
+      };
 
+  /// جزء خاص بمقارنة الأوبجكتس باستخدام equatable  
+  /// بيسهّل إننا نعرف إذا اتغيرت البيانات ولا لأ
   @override
   List<Object?> get props {
     return [
